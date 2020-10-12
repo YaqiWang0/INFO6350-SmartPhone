@@ -38,10 +38,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell;
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.cellImage.image = imageData[indexPath.row].image;
-        cell.cellLabel.text = imageData[indexPath.row].title;
+        //let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell;
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
+//        cell.cellImage.image = imageData[indexPath.row].image;
+//        cell.cellLabel.text = imageData[indexPath.row].title;
+        cell.imageView?.image = imageData[indexPath.row].image;
+        cell.imageLabel?.text = imageData[indexPath.row].title;
         return cell;
     }
 
