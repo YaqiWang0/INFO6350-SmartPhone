@@ -18,6 +18,8 @@
 		4ED00CA325350FD00055DE34 /* StockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED00CA225350FD00055DE34 /* StockData.swift */; };
 		4ED00CA7253510980055DE34 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED00CA5253510980055DE34 /* TableViewCell.swift */; };
 		4ED00CA8253510980055DE34 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED00CA6253510980055DE34 /* TableViewCell.xib */; };
+		4ED00CAF2538EC900055DE34 /* StockProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED00CAE2538EC900055DE34 /* StockProfile.swift */; };
+		4ED00CB22538EF2A0055DE34 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED00CB12538EF2A0055DE34 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		4ED00CA225350FD00055DE34 /* StockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockData.swift; sourceTree = "<group>"; };
 		4ED00CA5253510980055DE34 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		4ED00CA6253510980055DE34 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		4ED00CAE2538EC900055DE34 /* StockProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockProfile.swift; sourceTree = "<group>"; };
+		4ED00CB12538EF2A0055DE34 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		62848AE7FC4896BD491D9AAC /* Pods-StockUpdate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockUpdate.debug.xcconfig"; path = "Target Support Files/Pods-StockUpdate/Pods-StockUpdate.debug.xcconfig"; sourceTree = "<group>"; };
 		E2FB47CAD363EAB024CD4BA6 /* Pods-StockUpdate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockUpdate.release.xcconfig"; path = "Target Support Files/Pods-StockUpdate/Pods-StockUpdate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +86,8 @@
 				4ED00CA225350FD00055DE34 /* StockData.swift */,
 				4ED00CA5253510980055DE34 /* TableViewCell.swift */,
 				4ED00CA6253510980055DE34 /* TableViewCell.xib */,
+				4ED00CAE2538EC900055DE34 /* StockProfile.swift */,
+				4ED00CB12538EF2A0055DE34 /* Utilities.swift */,
 			);
 			path = StockUpdate;
 			sourceTree = "<group>";
@@ -220,9 +226,11 @@
 			files = (
 				4ED00C892534E3D50055DE34 /* ViewController.swift in Sources */,
 				4ED00C852534E3D50055DE34 /* AppDelegate.swift in Sources */,
+				4ED00CAF2538EC900055DE34 /* StockProfile.swift in Sources */,
 				4ED00C872534E3D50055DE34 /* SceneDelegate.swift in Sources */,
 				4ED00CA7253510980055DE34 /* TableViewCell.swift in Sources */,
 				4ED00CA325350FD00055DE34 /* StockData.swift in Sources */,
+				4ED00CB22538EF2A0055DE34 /* Utilities.swift in Sources */,
 				4ED00CA025350F030055DE34 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

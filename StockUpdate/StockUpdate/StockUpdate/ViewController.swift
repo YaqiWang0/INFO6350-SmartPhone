@@ -11,9 +11,6 @@ import SwiftyJSON
 import SwiftSpinner
 
 class ViewController: UIViewController {
-
-    let apiKey = "56f622a93b55019c5a0875058fc58f13";
-    let apiURL = "https://financialmodelingprep.com/api/v3/quote-short/";
     
     @IBOutlet weak var txtStockName: UITextField!
     
