@@ -17,12 +17,16 @@ class TableViewController: UITableViewController {
     
     let refresh = UIRefreshControl()
     
+    var textField = UITextField();
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        arr.append(StockProfile("MSFT"));
-        arr.append(StockProfile("AMZN"));
+        initializeValues()
         
+    }
+    
+    func initializeValues() {
         if #available(iOS 10.0, *) {
             tblView.refreshControl = refresh;
         } else {
@@ -33,12 +37,39 @@ class TableViewController: UITableViewController {
         refresh.attributedTitle = NSAttributedString(string: "Getting Stock Values")
     }
     
+    func addStockinDB(_ symbol : String) {
+        arr.append(StockProfile(symbol))
+        
+        refreshData()
+    }
+    
     @ objc private func refreshStockData(_ sender: Any) {
         refreshData()
     }
     
     @IBAction func refreshStockValues(_ sender: Any) {
         refreshData()
+    }
+    
+    @IBAction func addNewStock(_ sender: Any) {
+        let alert = UIAlertController(title: "Add Stock", message: "Type Stock Symbol", preferredStyle: .alert)
+        let OK = UIAlertAction(title: "OK", style: .default) { (action) in
+            guard let symbol = self.textField.text else {return}
+            self.addStockinDB(symbol)
+            print("OK pressed")
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .destructive) { (action) in
+            print("Cancel pressed")
+        }
+        alert.addTextField { (stockTextField) in
+            stockTextField.placeholder = "Type Stock Symbol";
+            self.textField = stockTextField;
+        }
+        alert.addAction(OK);
+        alert.addAction(cancel);
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func refreshData() {
@@ -61,27 +92,11 @@ class TableViewController: UITableViewController {
                 // Re initialize the stock values
                 self.arr.removeAll();
                 for stock in stocks {
-
                     let p : StockProfile = self.getStockProfileFromJSON(stock: stock);
                     if p.symbol == "NONE" {return}
                     self.arr.append(p);
-                    
-//                    print("*************")
-//                    print(symbol);
-//                    print(price);
-//                    print(companyName);
-//                    print(industry);
-//                    print(website);
-//                    print(description);
-//                    print(ceo);
-//                    print(fulltimeEmployees);
-//                    print(imageURL);
-//                    print("*************")
                 }
-//
                 self.tblView.reloadData();
-
-                
                 //self.lblStockValue.text = "Price for \(symbol) = \(price)"
             }
         }
@@ -125,10 +140,12 @@ class TableViewController: UITableViewController {
     }
 
 
+    //MARK: Table view funtions
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell;
         cell.lblPrice.text = "$\(String(describing: arr[indexPath.row].price))";
         cell.lblSymbol.text = arr[indexPath.row].symbol;
+        cell.lblCompanyName.text = arr[indexPath.row].companyName;
 
         // Configure the cell...
 

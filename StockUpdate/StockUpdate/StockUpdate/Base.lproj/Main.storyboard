@@ -79,11 +79,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="StockValues" id="ghI-Qy-ltY">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="EMZ-Ve-hZK">
-                            <connections>
-                                <action selector="refreshStockValues:" destination="liI-Zh-voF" id="aEV-5B-8yf"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="EMZ-Ve-hZK">
+                                <connections>
+                                    <action selector="refreshStockValues:" destination="liI-Zh-voF" id="aEV-5B-8yf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="kxi-pc-DSJ">
+                                <connections>
+                                    <action selector="addNewStock:" destination="liI-Zh-voF" id="ubO-td-y6u"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tblView" destination="gDR-Zj-u5Z" id="vL4-Dk-OCc"/>
