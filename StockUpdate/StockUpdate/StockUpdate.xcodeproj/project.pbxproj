@@ -20,6 +20,10 @@
 		4ED00CA8253510980055DE34 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ED00CA6253510980055DE34 /* TableViewCell.xib */; };
 		4ED00CAF2538EC900055DE34 /* StockProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED00CAE2538EC900055DE34 /* StockProfile.swift */; };
 		4ED00CB22538EF2A0055DE34 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED00CB12538EF2A0055DE34 /* Utilities.swift */; };
+		4EDA6FF7253A52060093917A /* RealmFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA6FF6253A52060093917A /* RealmFunctions.swift */; };
+		4EDA6FFA253A52540093917A /* SearchFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA6FF9253A52540093917A /* SearchFunctions.swift */; };
+		4EDA6FFD253A52990093917A /* NetworkingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA6FFC253A52990093917A /* NetworkingFunctions.swift */; };
+		4EDA7000253A52D60093917A /* TableViewFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDA6FFF253A52D60093917A /* TableViewFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		4ED00CA6253510980055DE34 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		4ED00CAE2538EC900055DE34 /* StockProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockProfile.swift; sourceTree = "<group>"; };
 		4ED00CB12538EF2A0055DE34 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		4EDA6FF6253A52060093917A /* RealmFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFunctions.swift; sourceTree = "<group>"; };
+		4EDA6FF9253A52540093917A /* SearchFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFunctions.swift; sourceTree = "<group>"; };
+		4EDA6FFC253A52990093917A /* NetworkingFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingFunctions.swift; sourceTree = "<group>"; };
+		4EDA6FFF253A52D60093917A /* TableViewFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewFunctions.swift; sourceTree = "<group>"; };
 		62848AE7FC4896BD491D9AAC /* Pods-StockUpdate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockUpdate.debug.xcconfig"; path = "Target Support Files/Pods-StockUpdate/Pods-StockUpdate.debug.xcconfig"; sourceTree = "<group>"; };
 		E2FB47CAD363EAB024CD4BA6 /* Pods-StockUpdate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockUpdate.release.xcconfig"; path = "Target Support Files/Pods-StockUpdate/Pods-StockUpdate.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +96,10 @@
 				4ED00CA6253510980055DE34 /* TableViewCell.xib */,
 				4ED00CAE2538EC900055DE34 /* StockProfile.swift */,
 				4ED00CB12538EF2A0055DE34 /* Utilities.swift */,
+				4EDA6FF6253A52060093917A /* RealmFunctions.swift */,
+				4EDA6FF9253A52540093917A /* SearchFunctions.swift */,
+				4EDA6FFC253A52990093917A /* NetworkingFunctions.swift */,
+				4EDA6FFF253A52D60093917A /* TableViewFunctions.swift */,
 			);
 			path = StockUpdate;
 			sourceTree = "<group>";
@@ -226,12 +238,16 @@
 			files = (
 				4ED00C892534E3D50055DE34 /* ViewController.swift in Sources */,
 				4ED00C852534E3D50055DE34 /* AppDelegate.swift in Sources */,
+				4EDA6FF7253A52060093917A /* RealmFunctions.swift in Sources */,
+				4EDA7000253A52D60093917A /* TableViewFunctions.swift in Sources */,
 				4ED00CAF2538EC900055DE34 /* StockProfile.swift in Sources */,
 				4ED00C872534E3D50055DE34 /* SceneDelegate.swift in Sources */,
 				4ED00CA7253510980055DE34 /* TableViewCell.swift in Sources */,
 				4ED00CA325350FD00055DE34 /* StockData.swift in Sources */,
 				4ED00CB22538EF2A0055DE34 /* Utilities.swift in Sources */,
 				4ED00CA025350F030055DE34 /* TableViewController.swift in Sources */,
+				4EDA6FFA253A52540093917A /* SearchFunctions.swift in Sources */,
+				4EDA6FFD253A52990093917A /* NetworkingFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
