@@ -11,10 +11,10 @@ import Alamofire
 import SwiftSpinner
 import SwiftyJSON
 import PromiseKit
+import RealmSwift
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
-
-
+class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource{
+    
     @IBOutlet weak var txtLat: UILabel!
     @IBOutlet weak var txtLng: UILabel!
     @IBOutlet weak var txtCityName: UILabel!
@@ -22,6 +22,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var txtForecast: UILabel!
     @IBOutlet weak var txtMaxTemp: UILabel!
     @IBOutlet weak var txtMinTemp: UILabel!
+    
+    @IBOutlet weak var tblView: UITableView!
+    
+    var arr : [CityInfo] = [CityInfo]()
+    
     
     let locationManager = CLLocationManager();
     
@@ -33,6 +38,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization();
         locationManager.requestLocation();
+        
+        tblView.delegate = self
+        tblView.dataSource = self
+        loadCitiesFromDB()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -154,5 +163,61 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             }
         } // end of promise
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath);
+        cell.textLabel?.text = "\(arr[indexPath.row].name),  \(arr[indexPath.row].adminArea), \(arr[indexPath.row].country)"
+        return cell;
+    }
+    
+    @IBAction func addCity(_ sender: Any) {
+        let alert = UIAlertController(title: "Please type name of city", message: "", preferredStyle: .alert)
+        
+        let OK = UIAlertAction(title: "OK", style: .default) { (action) in
+            print("OK Pressed")
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            print("Cancel pressed")
+        }
+        
+    }
+    
+    func loadCitiesFromDB() {
+        do {
+            let realm = try Realm()
+            let cities = realm.objects(CityInfo.self);
+            for city in cities {
+                arr.append(city)
+            }
+            tblView.reloadData()
+        } catch {
+            print ("Error loading cities")
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let city = arr[indexPath.row];
+        self.txtCityName.text = "City Name : \(city.name)"
+        
+        self.getOneHourForecast(for: city.key).done { (temp, forecast) in
+            self.txtTemperature.text = "Current Temperature : \(temp)"
+            self.txtForecast.text = "Forecast : \(forecast)"
+        }
+        .catch { (error) in
+            print(error)
+        }
+        
+        self.getOneDayForecast(for: city.key).done { (min, max) in
+            self.txtMinTemp.text = "Min Temperature : \(min)"
+            self.txtMaxTemp.text = "Max Temperature : \(max)"
+        }
+        .catch { (error) in
+            print(error)
+        }
+    }
 }
-

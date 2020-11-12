@@ -10,6 +10,6 @@ target 'NEUWeather' do
   pod 'SwiftyJSON'
   pod 'SwiftSpinner'
   pod 'PromiseKit'
-  pod 'PromiseKit/CoreLocation', '~>6.0'
+  pod 'RealmSwift'
 
 end
