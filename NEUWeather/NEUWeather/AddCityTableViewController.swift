@@ -20,11 +20,12 @@ class AddCityTableViewController: UITableViewController, UISearchBarDelegate{
     @IBOutlet weak var searchBar: UISearchBar!
     
     var arr : [CityInfo] = [CityInfo]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         print(Realm.Configuration.defaultConfiguration.fileURL)
-        delCities()
+        //delCities()
     }
     
     func delCities () {

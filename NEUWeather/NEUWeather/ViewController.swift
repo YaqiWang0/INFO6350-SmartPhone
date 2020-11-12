@@ -44,6 +44,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         loadCitiesFromDB()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadCitiesFromDB()
+    }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Error in getting Location : \(error)");
     }
@@ -189,6 +193,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     
     func loadCitiesFromDB() {
         do {
+            arr = [CityInfo]()
             let realm = try Realm()
             let cities = realm.objects(CityInfo.self);
             for city in cities {
