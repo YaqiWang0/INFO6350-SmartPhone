@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4E1BDCA8255CD8C90022DA3B /* AddCityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BDCA7255CD8C90022DA3B /* AddCityTableViewController.swift */; };
 		4E1BDCAB255CE5310022DA3B /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1BDCAA255CE5310022DA3B /* City.swift */; };
+		4ED7B55225623D3E00F18107 /* WeatherIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED7B55125623D3E00F18107 /* WeatherIcon.swift */; };
 		4EDDD1F0255B4A50006BB3EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDD1EF255B4A50006BB3EA /* AppDelegate.swift */; };
 		4EDDD1F2255B4A50006BB3EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDD1F1255B4A50006BB3EA /* SceneDelegate.swift */; };
 		4EDDD1F4255B4A50006BB3EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDDD1F3255B4A50006BB3EA /* ViewController.swift */; };
@@ -23,6 +24,7 @@
 		2739CD08D2FED34A005A0006 /* Pods-NEUWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NEUWeather.release.xcconfig"; path = "Target Support Files/Pods-NEUWeather/Pods-NEUWeather.release.xcconfig"; sourceTree = "<group>"; };
 		4E1BDCA7255CD8C90022DA3B /* AddCityTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityTableViewController.swift; sourceTree = "<group>"; };
 		4E1BDCAA255CE5310022DA3B /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		4ED7B55125623D3E00F18107 /* WeatherIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIcon.swift; sourceTree = "<group>"; };
 		4EDDD1EC255B4A50006BB3EA /* NEUWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NEUWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EDDD1EF255B4A50006BB3EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EDDD1F1255B4A50006BB3EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				4EDDD205255B4B3C006BB3EA /* Constants.swift */,
+				4ED7B55125623D3E00F18107 /* WeatherIcon.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EDDD1F4255B4A50006BB3EA /* ViewController.swift in Sources */,
+				4ED7B55225623D3E00F18107 /* WeatherIcon.swift in Sources */,
 				4EDDD1F0255B4A50006BB3EA /* AppDelegate.swift in Sources */,
 				4E1BDCA8255CD8C90022DA3B /* AddCityTableViewController.swift in Sources */,
 				4EDDD1F2255B4A50006BB3EA /* SceneDelegate.swift in Sources */,

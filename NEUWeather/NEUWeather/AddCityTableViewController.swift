@@ -28,17 +28,7 @@ class AddCityTableViewController: UITableViewController, UISearchBarDelegate{
         //delCities()
     }
     
-    func delCities () {
-        do {
-            let realm = try Realm()
-            let cities = realm.objects(CityInfo.self)
-            for city in cities {
-                deleteCity(city)
-            }
-        } catch {
-            print("Error")
-        }
-    }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -114,17 +104,6 @@ class AddCityTableViewController: UITableViewController, UISearchBarDelegate{
             })
         } catch {
             print("Error in writing to Database")
-        }
-    }
-    
-    func deleteCity(_ city : CityInfo) {
-        do {
-            let realm = try Realm()
-            try realm.write ({
-                    realm.delete(city)
-                })
-        } catch {
-            print("Error")
         }
     }
 

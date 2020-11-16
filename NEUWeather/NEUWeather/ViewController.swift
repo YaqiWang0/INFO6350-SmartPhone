@@ -13,10 +13,9 @@ import SwiftyJSON
 import PromiseKit
 import RealmSwift
 
-class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource{
+class ViewController: UIViewController{
     
-    @IBOutlet weak var txtLat: UILabel!
-    @IBOutlet weak var txtLng: UILabel!
+
     @IBOutlet weak var txtCityName: UILabel!
     @IBOutlet weak var txtTemperature: UILabel!
     @IBOutlet weak var txtForecast: UILabel!
@@ -24,6 +23,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     @IBOutlet weak var txtMinTemp: UILabel!
     
     @IBOutlet weak var tblView: UITableView!
+    @IBOutlet weak var weatherImage: UIImageView!
+    
     
     var arr : [CityInfo] = [CityInfo]()
     
@@ -41,27 +42,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         
         tblView.delegate = self
         tblView.dataSource = self
-        loadCitiesFromDB()
+        delCities()
+    }
+    
+    func delCities () {
+        do {
+            let realm = try Realm()
+            let cities = realm.objects(CityInfo.self)
+            for city in cities {
+                deleteCity(city)
+            }
+        } catch {
+            print("Error")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         loadCitiesFromDB()
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error in getting Location : \(error)");
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let currLocation = locations.last {
-            lat = currLocation.coordinate.latitude
-            lng = currLocation.coordinate.longitude
-            txtLat.text = "Latitude : \(lat!)"
-            txtLng.text = "Longitude : \(lng!)"
-            print(lat!)
-            print(lng!)
-        }
-    }
+
     
     func getLocalWeather(_ lat : CLLocationDegrees, _ lng : CLLocationDegrees) {
         let url = getURLCurrentLocation(lat, lng)
@@ -83,6 +83,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
     }
 
     @IBAction func getWeather(_ sender: Any) {
+        updateCurrentWeather()
+    }
+    
+    func updateCurrentWeather() {
         guard let latitude = lat, let longitude = lng else {return}
         let url = getURLCurrentLocation(latitude, longitude)
         getLocationData(for: url).done { (key, city) in
@@ -91,6 +95,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
             self.getOneHourForecast(for: key).done { (temp, forecast) in
                 self.txtTemperature.text = "Current Temperature : \(temp)"
                 self.txtForecast.text = "Forecast : \(forecast)"
+                self.weatherImage.image = self.getWeatherIcon(forecast)
             }
             .catch { (error) in
                 print(error)
@@ -168,16 +173,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         } // end of promise
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arr.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath);
-        cell.textLabel?.text = "\(arr[indexPath.row].name),  \(arr[indexPath.row].adminArea), \(arr[indexPath.row].country)"
-        return cell;
-    }
-    
     @IBAction func addCity(_ sender: Any) {
         let alert = UIAlertController(title: "Please type name of city", message: "", preferredStyle: .alert)
         
@@ -205,13 +200,61 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         }
     }
     
+    func getWeatherIcon(_ forcast: String) -> UIImage{
+        let img = UIImage(named: "01-s")!
+        let dayTime = isDay()
+        if dayTime {
+            guard let dayImage = dayIcons[forcast] else {return img}
+            return dayImage
+        }
+    
+        guard let nightImage = nightIcons[forcast] else {return img}
+        return nightImage
+    }
+    
+   
+    
+    func deleteCity(_ city : CityInfo) {
+        do {
+            let realm = try Realm()
+            try realm.write ({
+                    realm.delete(city)
+                })
+        } catch {
+            print("Error")
+        }
+    }
+}
+
+extension ViewController: CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let currLocation = locations.last {
+            lat = currLocation.coordinate.latitude
+            lng = currLocation.coordinate.longitude
+//            txtLat.text = "Latitude : \(lat!)"
+//            txtLng.text = "Longitude : \(lng!)"
+            updateCurrentWeather()
+            print(lat!)
+            print(lng!)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error in getting Location : \(error)");
+    }
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let city = arr[indexPath.row];
+        
         self.txtCityName.text = "City Name : \(city.name)"
         
         self.getOneHourForecast(for: city.key).done { (temp, forecast) in
             self.txtTemperature.text = "Current Temperature : \(temp)"
             self.txtForecast.text = "Forecast : \(forecast)"
+            self.weatherImage.image = self.getWeatherIcon(forecast)
         }
         .catch { (error) in
             print(error)
@@ -224,5 +267,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, UITableViewDe
         .catch { (error) in
             print(error)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arr.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath);
+        cell.textLabel?.text = "\(arr[indexPath.row].name),  \(arr[indexPath.row].adminArea), \(arr[indexPath.row].country)"
+        return cell;
     }
 }
