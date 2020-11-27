@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>817680216829-6r53cf47v8e9q2p4n2k85c65t03iob98.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.817680216829-6r53cf47v8e9q2p4n2k85c65t03iob98</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDvZLNko3QYDkaOVsPow06utPJn39SWaHU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>817680216829</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>edu.northeastern.yaqi.TwitterClone</string>
+	<key>PROJECT_ID</key>
+	<string>fall2020-2c358</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fall2020-2c358.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:817680216829:ios:182d672c7872b2da1f0494</string>
+	<key>DATABASE_URL</key>
+	<string>https://fall2020-2c358.firebaseio.com</string>
+</dict>
+</plist>

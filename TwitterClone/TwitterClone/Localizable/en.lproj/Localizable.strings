@@ -1,0 +1,7 @@
+"email" = "Enter E-Mail";
+"password" = "Enter Password";
+"login" = "Login";
+"status" = "Status";
+"email_password_blank" = "Email or password is blank";
+"invalid_email" = "Invalid EMail";
+
